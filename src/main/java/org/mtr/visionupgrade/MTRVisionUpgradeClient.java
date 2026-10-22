@@ -12,6 +12,7 @@ public final class MTRVisionUpgradeClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		LOGGER.info("[MTR-VisionUpgrade] Initializing client rendering and performance optimization suite...");
+		org.mtr.visionupgrade.config.VisionUpgradeConfig.load();
 		BlockEntityRenderCulling.init();
 		LOGGER.info("[MTR-VisionUpgrade] Client frustum culling, buffer reuse, geometry cache, and shader sort optimizations active!");
 	}

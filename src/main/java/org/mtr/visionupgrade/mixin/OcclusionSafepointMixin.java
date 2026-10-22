@@ -29,7 +29,7 @@ public abstract class OcclusionSafepointMixin {
 
 	@Unique
 	private void mtr$pollSafepoint() {
-		if ((++mtr$occlusionWork & 0xFFFF) == 0) {
+		if (org.mtr.visionupgrade.config.VisionUpgradeConfig.get().enableSafepointFix && (++mtr$occlusionWork & 0xFFFF) == 0) {
 			Thread.yield();
 		}
 	}

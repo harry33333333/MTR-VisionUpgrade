@@ -1,0 +1,23 @@
+{
+  "mtr_visionupgrade.config.title": "MTR-VisionUpgrade 客户端渲染优化设置",
+  "mtr_visionupgrade.config.category.distances": "视距设置",
+  "mtr_visionupgrade.config.category.culling": "剔除与性能优化",
+
+  "mtr_visionupgrade.config.rail_render_distance": "独立铁轨渲染视距 (区块)",
+  "mtr_visionupgrade.config.rail_render_distance.tooltip": "独立控制铁轨渲染视距（以区块为单位，1区块=16格）。\n设为 0 时跟随原版客户端视距。\n★即使连接到外部服务器，此项设置也 100% 生效！",
+
+  "mtr_visionupgrade.config.vehicle_render_distance": "列车渲染最大视距 (格)",
+  "mtr_visionupgrade.config.vehicle_render_distance.tooltip": "超出此距离的列车车厢将被完全剔除，不再进行矩阵计算与渲染，显著提升远景性能。",
+
+  "mtr_visionupgrade.config.enable_interior_culling": "启用远距离内饰剔除 (LOD)",
+  "mtr_visionupgrade.config.enable_interior_culling.tooltip": "当列车距离较远时，自动剔除车厢内部的座椅、扶手、内饰材质与乘坐玩家模型。",
+
+  "mtr_visionupgrade.config.interior_culling_distance": "内饰剔除距离阈值 (格)",
+  "mtr_visionupgrade.config.interior_culling_distance.tooltip": "列车距离摄像机超过该距离时触发内饰剔除（推荐 32 - 64 格）。",
+
+  "mtr_visionupgrade.config.enable_frustum_culling": "启用站台门视锥剔除",
+  "mtr_visionupgrade.config.enable_frustum_culling.tooltip": "对屏幕视野外的 PSD / APG 站台门方块实体进行硬件视锥剔除，大幅减少大型枢纽站的 Draw Call。",
+
+  "mtr_visionupgrade.config.enable_safepoint_fix": "启用铁轨遮挡剔除 GC 安全点修复",
+  "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "在多线程遮挡剔除密集计算时定期出让安全点，消除超大规模路网导致的微卡顿与垃圾回收冻结。"
+}

@@ -20,6 +20,9 @@ public abstract class RenderPSDAPGDoorMixin<T extends BlockPSDAPGDoorBase.BlockE
 		if (world == null) {
 			return;
 		}
+		if (!org.mtr.visionupgrade.config.VisionUpgradeConfig.get().enableFrustumCulling) {
+			return;
+		}
 		final BlockPos blockPos = entity.getPos2();
 		if (!BlockEntityRenderCulling.isVisible(world, blockPos, 2)) {
 			ci.cancel();

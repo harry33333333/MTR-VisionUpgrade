@@ -8,13 +8,16 @@
 		"MTR-VisionUpgrade Contributors"
 	],
 	"contact": {
-		"homepage": "https://github.com/Yanyang-Technology-Group/MTR-YanYang"
+		"homepage": "https://github.com/harry33333333/MTR-VisionUpgrade"
 	},
 	"license": "MIT",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
 			"org.mtr.visionupgrade.MTRVisionUpgradeClient"
+		],
+		"modmenu": [
+			"org.mtr.visionupgrade.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [

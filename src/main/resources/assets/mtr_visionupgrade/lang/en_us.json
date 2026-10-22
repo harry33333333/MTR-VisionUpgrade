@@ -1,0 +1,23 @@
+{
+  "mtr_visionupgrade.config.title": "MTR-VisionUpgrade Client Optimization Settings",
+  "mtr_visionupgrade.config.category.distances": "Render Distances",
+  "mtr_visionupgrade.config.category.culling": "Culling & Optimizations",
+
+  "mtr_visionupgrade.config.rail_render_distance": "Independent Rail Render Distance (Chunks)",
+  "mtr_visionupgrade.config.rail_render_distance.tooltip": "Independently controls rail rendering distance (1 chunk = 16 blocks).\nSet to 0 to follow vanilla Minecraft view distance.\n★ Guaranteed to take effect even when connected to multiplayer servers!",
+
+  "mtr_visionupgrade.config.vehicle_render_distance": "Train Max Render Distance (Blocks)",
+  "mtr_visionupgrade.config.vehicle_render_distance.tooltip": "Vehicles beyond this distance are completely culled, eliminating unnecessary matrix transforms and draw calls.",
+
+  "mtr_visionupgrade.config.enable_interior_culling": "Enable Distant Interior Culling (LOD)",
+  "mtr_visionupgrade.config.enable_interior_culling.tooltip": "Automatically culls seats, handrails, interior materials, and riding players inside cars at a distance.",
+
+  "mtr_visionupgrade.config.interior_culling_distance": "Interior Culling Distance Threshold (Blocks)",
+  "mtr_visionupgrade.config.interior_culling_distance.tooltip": "Distance beyond which interior details are culled (recommended 32 - 64 blocks).",
+
+  "mtr_visionupgrade.config.enable_frustum_culling": "Enable Platform Door Frustum Culling",
+  "mtr_visionupgrade.config.enable_frustum_culling.tooltip": "Culls off-screen PSD / APG platform screen door block entities, drastically cutting down draw calls at large interchange stations.",
+
+  "mtr_visionupgrade.config.enable_safepoint_fix": "Enable Rail Culling GC Safepoint Fix",
+  "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "Periodically yields thread safepoints during rail occlusion calculations to eliminate GC safepoint freeze on large rail networks."
+}

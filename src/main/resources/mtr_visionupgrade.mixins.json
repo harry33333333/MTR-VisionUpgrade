@@ -8,6 +8,8 @@
 		"RenderRouteBaseMixin",
 		"MainRendererMixin",
 		"RenderRailsMixin",
+		"RenderVehiclesMixin",
+		"ModelPropertiesPartMixin",
 		"VertexAttributeStateMixin",
 		"MaterialPropertiesMixin",
 		"OptimizedBatchManagerMixin",
