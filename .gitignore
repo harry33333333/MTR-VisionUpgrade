@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+libs/
+.loom-cache/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Runtime & Logs
+run/
+*.log
+*.heapdump
+latest.log

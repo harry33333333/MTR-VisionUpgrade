@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "mtr_visionupgrade",
+	"version": "${version}",
+	"name": "MTR-VisionUpgrade",
+	"description": "Client-side rendering and performance optimization suite for Minecraft Transit Railway (MTR 4.x). 100% client-only, fully compatible with vanilla MTR servers.",
+	"authors": [
+		"MTR-VisionUpgrade Contributors"
+	],
+	"contact": {
+		"homepage": "https://github.com/Yanyang-Technology-Group/MTR-YanYang"
+	},
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"org.mtr.visionupgrade.MTRVisionUpgradeClient"
+		]
+	},
+	"mixins": [
+		"mtr_visionupgrade.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"fabric-api": ">=0.92.6"
+	},
+	"suggests": {
+		"mtr": ">=4.0.0",
+		"iris": ">=1.7.0"
+	}
+}
