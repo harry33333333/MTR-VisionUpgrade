@@ -6,8 +6,6 @@
 	"compatibilityLevel": "JAVA_17",
 	"client": [
 		"RenderPSDAPGDoorMixin",
-		"RenderRouteBaseMixin",
-		"DynamicResourceMixin",
 		"MainRendererMixin",
 		"RenderRailsMixin",
 		"RenderVehiclesMixin",
@@ -17,8 +15,6 @@
 		"StoredMatrixTransformationsAccessor",
 		"VertexAttributeStateMixin",
 		"MaterialPropertiesMixin",
-		"OptimizedBatchManagerMixin",
-		"OptimizedShaderManagerMixin",
 		"PathDataIdMixin",
 		"OcclusionSafepointMixin",
 		"IrisBufferSourceMixin",
