@@ -1,6 +1,7 @@
 package org.mtr.visionupgrade.mixin;
 
 import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 import org.mtr.mapping.holder.Identifier;
@@ -20,10 +21,12 @@ public abstract class DynamicResourceMixin {
 			try {
 				final int glId = texture.getGlId();
 				if (glId > 0) {
-					GlStateManager._bindTexture(glId);
-					GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
-					GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR_MIPMAP_LINEAR);
-					GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+					RenderSystem.recordRenderCall(() -> {
+						GlStateManager._bindTexture(glId);
+						GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
+						GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR_MIPMAP_LINEAR);
+						GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+					});
 				}
 			} catch (Throwable ignored) {
 			}
