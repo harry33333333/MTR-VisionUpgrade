@@ -90,6 +90,42 @@ public class ClothConfigScreenBuilder {
                 .setSaveConsumer(val -> config.enableIrisOptimization = val)
                 .build());
 
+        cullingCategory.addEntry(entryBuilder.startBooleanToggle(
+                Text.translatable("mtr_visionupgrade.config.enable_parallel_vehicles"),
+                config.enableParallelVehicles
+        )
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("mtr_visionupgrade.config.enable_parallel_vehicles.tooltip"))
+                .setSaveConsumer(val -> config.enableParallelVehicles = val)
+                .build());
+
+        cullingCategory.addEntry(entryBuilder.startBooleanToggle(
+                Text.translatable("mtr_visionupgrade.config.enable_rail_adaptive_lod"),
+                config.enableRailAdaptiveLOD
+        )
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("mtr_visionupgrade.config.enable_rail_adaptive_lod.tooltip"))
+                .setSaveConsumer(val -> config.enableRailAdaptiveLOD = val)
+                .build());
+
+        cullingCategory.addEntry(entryBuilder.startBooleanToggle(
+                Text.translatable("mtr_visionupgrade.config.enable_dynamic_mipmap"),
+                config.enableDynamicMipmap
+        )
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("mtr_visionupgrade.config.enable_dynamic_mipmap.tooltip"))
+                .setSaveConsumer(val -> config.enableDynamicMipmap = val)
+                .build());
+
+        cullingCategory.addEntry(entryBuilder.startBooleanToggle(
+                Text.translatable("mtr_visionupgrade.config.enable_backface_culling"),
+                config.enableBackFaceCulling
+        )
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("mtr_visionupgrade.config.enable_backface_culling.tooltip"))
+                .setSaveConsumer(val -> config.enableBackFaceCulling = val)
+                .build());
+
         builder.setSavingRunnable(VisionUpgradeConfig::save);
         return builder.build();
     }

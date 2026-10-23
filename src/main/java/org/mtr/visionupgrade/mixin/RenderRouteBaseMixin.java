@@ -38,7 +38,7 @@ public abstract class RenderRouteBaseMixin<T extends BlockPSDTop.BlockEntityBase
 			ci.cancel();
 			return;
 		}
-		if (org.mtr.mapping.mapper.OptimizedRenderer.renderingShadows()) {
+		if (org.mtr.mapping.mapper.OptimizedRenderer.renderingShadows() || !org.mtr.visionupgrade.config.VisionUpgradeConfig.get().enableBackFaceCulling) {
 			return;
 		}
 		final net.minecraft.client.MinecraftClient client = net.minecraft.client.MinecraftClient.getInstance();

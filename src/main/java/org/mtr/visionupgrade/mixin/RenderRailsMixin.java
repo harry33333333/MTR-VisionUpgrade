@@ -22,7 +22,7 @@ public abstract class RenderRailsMixin {
 	)
 	private static void mtr$cachedRailRender(RailMath railMath, RailMath.RenderRail callback, double interval, float offsetRadius1, float offsetRadius2) {
 		double effectiveInterval = interval;
-		if (interval < 0.8) {
+		if (interval < 0.8 && VisionUpgradeConfig.get().enableRailAdaptiveLOD) {
 			final net.minecraft.client.MinecraftClient client = net.minecraft.client.MinecraftClient.getInstance();
 			if (client != null && client.gameRenderer != null && client.gameRenderer.getCamera() != null) {
 				final net.minecraft.util.math.Vec3d camPos = client.gameRenderer.getCamera().getPos();

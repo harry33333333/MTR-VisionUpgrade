@@ -22,5 +22,17 @@
   "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "在多线程遮挡剔除密集计算时定期出让安全点，消除超大规模路网导致的微卡顿与垃圾回收冻结。",
 
   "mtr_visionupgrade.config.enable_iris_optimization": "启用 Iris 光影拓扑排序优化",
-  "mtr_visionupgrade.config.enable_iris_optimization.tooltip": "当开启 Iris 光影时，跨帧缓存半透明强连通分量与反馈弧集排序结果，将每帧约 40ms 的光影排序耗时降至 ~0.5ms。"
+  "mtr_visionupgrade.config.enable_iris_optimization.tooltip": "当开启 Iris 光影时，跨帧缓存半透明强连通分量与反馈弧集排序结果，将每帧约 40ms 的光影排序耗时降至 ~0.5ms。",
+
+  "mtr_visionupgrade.config.enable_parallel_vehicles": "启用列车多核并行准备管线",
+  "mtr_visionupgrade.config.enable_parallel_vehicles.tooltip": "使用限制核心数的 ForkJoinPool 并行化计算视野内各列车的平滑插值、转向架旋转与遮挡剔除，显著降低密集列车路网的主线程 CPU 占用。",
+
+  "mtr_visionupgrade.config.enable_rail_adaptive_lod": "启用远景连续钢轨动态弦长合并 (LOD)",
+  "mtr_visionupgrade.config.enable_rail_adaptive_lod.tooltip": "在距离大于 48 格时，自适应合并远景弯道连续钢轨拟合切片步长，大幅缩减 50%~75% 钢轨几何多边形，同时 100% 保持原有轨枕间距与数量不变。",
+
+  "mtr_visionupgrade.config.enable_dynamic_mipmap": "启用动态贴图三线性 Mipmap 过滤",
+  "mtr_visionupgrade.config.enable_dynamic_mipmap.tooltip": "为站名牌、PIDS 文字看板和路线图等动态生成贴图自动生成 Mipmap 并启用三线性过滤，彻底消除远景文字走样与闪烁噪点。",
+
+  "mtr_visionupgrade.config.enable_backface_culling": "启用贴墙看板/路线图背向剔除",
+  "mtr_visionupgrade.config.enable_backface_culling.tooltip": "当玩家摄像机位于单面站台路线图背面或墙体内时跳过绘制，削减无效多边形，同时严格隔离保护 JCM 双面悬挂看板与立柱屏幕。"
 }

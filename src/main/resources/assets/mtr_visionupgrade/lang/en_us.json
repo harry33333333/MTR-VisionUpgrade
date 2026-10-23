@@ -22,5 +22,17 @@
   "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "Periodically yields thread safepoints during rail occlusion calculations to eliminate GC safepoint freeze on large rail networks.",
 
   "mtr_visionupgrade.config.enable_iris_optimization": "Enable Iris Shaders Sort Optimization",
-  "mtr_visionupgrade.config.enable_iris_optimization.tooltip": "Caches translucency topological render order and feedback arc sets when Iris shaders are active, dramatically reducing frame time overhead from ~40ms to ~0.5ms."
+  "mtr_visionupgrade.config.enable_iris_optimization.tooltip": "Caches translucency topological render order and feedback arc sets when Iris shaders are active, dramatically reducing frame time overhead from ~40ms to ~0.5ms.",
+
+  "mtr_visionupgrade.config.enable_parallel_vehicles": "Enable Multi-Core Parallel Vehicle Pipeline",
+  "mtr_visionupgrade.config.enable_parallel_vehicles.tooltip": "Utilizes a bounded ForkJoinPool to compute vehicle interpolation, bogie rotation, and occlusion in parallel, significantly reducing render-thread CPU bottlenecks.",
+
+  "mtr_visionupgrade.config.enable_rail_adaptive_lod": "Enable Distant Rail Chordal Deviation Merging (LOD)",
+  "mtr_visionupgrade.config.enable_rail_adaptive_lod.tooltip": "Adaptively merges continuous rail curve segment step sizes beyond 48 blocks, slashing 50%~75% rail polygon vertices while preserving 100% sleeper count and spacing.",
+
+  "mtr_visionupgrade.config.enable_dynamic_mipmap": "Enable Trilinear Mipmapping for Dynamic Textures",
+  "mtr_visionupgrade.config.enable_dynamic_mipmap.tooltip": "Generates mipmaps and applies trilinear filtering (GL_LINEAR_MIPMAP_LINEAR) for station signs, PIDS, and route maps, eliminating high-frequency aliasing and pixel flickering.",
+
+  "mtr_visionupgrade.config.enable_backface_culling": "Enable Station Route Map Back-face Culling",
+  "mtr_visionupgrade.config.enable_backface_culling.tooltip": "Skips rendering single-sided wall-mounted route maps when camera is behind them, reducing polygon count while strictly isolating and preserving JCM double-sided PIDS and LCDs."
 }

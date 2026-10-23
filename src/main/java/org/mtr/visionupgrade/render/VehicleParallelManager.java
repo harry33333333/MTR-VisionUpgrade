@@ -27,7 +27,7 @@ public final class VehicleParallelManager {
 		if (vehicles == null || vehicles.isEmpty()) {
 			return;
 		}
-		if (vehicles.size() <= 1) {
+		if (!org.mtr.visionupgrade.config.VisionUpgradeConfig.get().enableParallelVehicles || vehicles.size() <= 1) {
 			vehicles.forEach(consumer);
 			return;
 		}

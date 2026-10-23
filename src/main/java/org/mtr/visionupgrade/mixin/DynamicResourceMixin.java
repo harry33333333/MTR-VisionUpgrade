@@ -16,7 +16,7 @@ public abstract class DynamicResourceMixin {
 
 	@Inject(method = "<init>(Lorg/mtr/mapping/holder/Identifier;Lorg/mtr/mapping/holder/NativeImageBackedTexture;)V", at = @At("RETURN"), remap = false, require = 0)
 	private void mtr$enableMipmaps(Identifier identifier, NativeImageBackedTexture texture, CallbackInfo ci) {
-		if (texture != null) {
+		if (texture != null && org.mtr.visionupgrade.config.VisionUpgradeConfig.get().enableDynamicMipmap) {
 			try {
 				final int glId = texture.getGlId();
 				if (glId > 0) {
