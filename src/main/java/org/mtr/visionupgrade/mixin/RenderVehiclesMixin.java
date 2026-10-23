@@ -17,6 +17,31 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class RenderVehiclesMixin {
 
 	@Redirect(
+		method = "render(JLorg/mtr/mapping/holder/Vector3d;)V",
+		at = @At(
+			value = "INVOKE",
+			target = "Lorg/mtr/libraries/it/unimi/dsi/fastutil/objects/ObjectArraySet;forEach(Ljava/util/function/Consumer;)V"
+		),
+		remap = false,
+		require = 0
+	)
+	private static void mtr$parallelVehiclePreparation(org.mtr.libraries.it.unimi.dsi.fastutil.objects.ObjectArraySet<org.mtr.mod.data.VehicleExtension> vehicles, java.util.function.Consumer<org.mtr.mod.data.VehicleExtension> consumer) {
+		org.mtr.visionupgrade.render.VehicleParallelManager.prepareVehicles(vehicles, consumer);
+	}
+
+	@Redirect(
+		method = "lambda$render$15",
+		at = @At(value = "INVOKE", target = "Lorg/mtr/libraries/it/unimi/dsi/fastutil/objects/ObjectArrayList;add(Ljava/lang/Object;)Z"),
+		remap = false,
+		require = 0
+	)
+	private static boolean mtr$threadSafeAdd(org.mtr.libraries.it.unimi.dsi.fastutil.objects.ObjectArrayList list, Object element) {
+		synchronized (list) {
+			return list.add(element);
+		}
+	}
+
+	@Redirect(
 		method = "lambda$render$3(Lorg/mtr/mod/data/VehicleExtension;ILorg/mtr/libraries/it/unimi/dsi/fastutil/objects/ObjectObjectImmutablePair;Lorg/mtr/libraries/com/logisticscraft/occlusionculling/util/Vec3d;Lorg/mtr/libraries/com/logisticscraft/occlusionculling/OcclusionCullingInstance;)Ljava/lang/Runnable;",
 		at = @At(
 			value = "INVOKE",

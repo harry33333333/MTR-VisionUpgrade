@@ -23,7 +23,7 @@ final class GraphResultCache<T> {
 		this.maxRecords = maxRecords;
 	}
 
-	void clear() {
+	synchronized void clear() {
 		entries.clear();
 		Arrays.fill(identities, null);
 		Arrays.fill(weights, 0);
@@ -32,7 +32,38 @@ final class GraphResultCache<T> {
 		hash = 0;
 	}
 
-	T getOrCompute(Collection<?> graphs, Object qualifier, RenderOrderCache.Graph edgeWeights, Supplier<T> compute) {
+	synchronized T find(Collection<?> graphs, Object qualifier, RenderOrderCache.Graph edgeWeights) {
+		final int previousSize = size;
+		size = 0;
+		hash = 1;
+		boolean valid = append(qualifier, graphs.size());
+		for (final Object graph : graphs) {
+			if (!valid || !(graph instanceof RenderOrderCache.Graph) || !snapshot(((RenderOrderCache.Graph) graph).mtr$getVertices(), edgeWeights)) {
+				Arrays.fill(identities, 0, Math.max(previousSize, size), null);
+				size = 0;
+				return null;
+			}
+		}
+		if (size < previousSize) {
+			Arrays.fill(identities, size, previousSize, null);
+		}
+		if (!valid || maxEntries <= 0) {
+			return null;
+		}
+		for (int i = 0; i < entries.size(); i++) {
+			final Entry<T> entry = entries.get(i);
+			if (matches(entry)) {
+				if (i > 0) {
+					entries.remove(i);
+					entries.add(0, entry);
+				}
+				return entry.result;
+			}
+		}
+		return null;
+	}
+
+	synchronized T getOrCompute(Collection<?> graphs, Object qualifier, RenderOrderCache.Graph edgeWeights, Supplier<T> compute) {
 		final int previousSize = size;
 		size = 0;
 		hash = 1;

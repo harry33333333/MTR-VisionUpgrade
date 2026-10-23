@@ -36,6 +36,25 @@ public abstract class RenderRouteBaseMixin<T extends BlockPSDTop.BlockEntityBase
 		final BlockPos blockPos = entity.getPos2();
 		if (!BlockEntityRenderCulling.isVisible(world, blockPos, 1)) {
 			ci.cancel();
+			return;
+		}
+		if (org.mtr.mapping.mapper.OptimizedRenderer.renderingShadows()) {
+			return;
+		}
+		final net.minecraft.client.MinecraftClient client = net.minecraft.client.MinecraftClient.getInstance();
+		if (client != null && client.gameRenderer != null && client.gameRenderer.getCamera() != null) {
+			final net.minecraft.util.math.Vec3d camPos = client.gameRenderer.getCamera().getPos();
+			if (camPos != null) {
+				final BlockState state = world.getBlockState(blockPos);
+				final Direction facing = org.mtr.mod.block.IBlock.getStatePropertySafe(state, org.mtr.mapping.mapper.DirectionHelper.FACING);
+				final Direction front = facing.getOpposite();
+				final double dx = camPos.x - (blockPos.getX() + 0.5);
+				final double dz = camPos.z - (blockPos.getZ() + 0.5);
+				final double dot = dx * front.getOffsetX() + dz * front.getOffsetZ();
+				if (dot < -0.15) {
+					ci.cancel();
+				}
+			}
 		}
 	}
 

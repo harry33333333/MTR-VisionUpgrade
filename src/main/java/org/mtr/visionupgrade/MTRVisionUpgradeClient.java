@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.mtr.visionupgrade.config.VisionUpgradeConfig;
 import org.mtr.visionupgrade.culling.BlockEntityRenderCulling;
 import org.mtr.visionupgrade.culling.InteriorCullingState;
+import org.mtr.visionupgrade.render.DoorStateCache;
 import org.mtr.visionupgrade.render.RailGeometryCache;
 import org.mtr.visionupgrade.render.RenderCallbackPool;
 import org.mtr.visionupgrade.render.iris.RenderOrderCache;
@@ -63,6 +64,7 @@ public final class MTRVisionUpgradeClient implements ClientModInitializer {
 		try {
 			RailGeometryCache.INSTANCE.clear();
 			RenderCallbackPool.INSTANCE.clear();
+			DoorStateCache.clear();
 			RenderOrderCache.clearAll();
 			BlockEntityRenderCulling.clear();
 			InteriorCullingState.reset();

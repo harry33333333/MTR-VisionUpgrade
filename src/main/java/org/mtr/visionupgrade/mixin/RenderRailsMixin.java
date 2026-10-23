@@ -21,7 +21,28 @@ public abstract class RenderRailsMixin {
 		require = 0
 	)
 	private static void mtr$cachedRailRender(RailMath railMath, RailMath.RenderRail callback, double interval, float offsetRadius1, float offsetRadius2) {
-		RailGeometryCache.INSTANCE.render(railMath, callback, interval, offsetRadius1, offsetRadius2);
+		double effectiveInterval = interval;
+		if (interval < 0.8) {
+			final net.minecraft.client.MinecraftClient client = net.minecraft.client.MinecraftClient.getInstance();
+			if (client != null && client.gameRenderer != null && client.gameRenderer.getCamera() != null) {
+				final net.minecraft.util.math.Vec3d camPos = client.gameRenderer.getCamera().getPos();
+				if (camPos != null) {
+					final double midX = (railMath.minX + railMath.maxX) * 0.5;
+					final double midY = (railMath.minY + railMath.maxY) * 0.5;
+					final double midZ = (railMath.minZ + railMath.maxZ) * 0.5;
+					final double dx = camPos.x - midX;
+					final double dy = camPos.y - midY;
+					final double dz = camPos.z - midZ;
+					final double distSq = dx * dx + dy * dy + dz * dz;
+					if (distSq > 96.0 * 96.0) {
+						effectiveInterval = Math.min(1.0, interval * 4.0);
+					} else if (distSq > 48.0 * 48.0) {
+						effectiveInterval = Math.min(0.8, interval * 2.5);
+					}
+				}
+			}
+		}
+		RailGeometryCache.INSTANCE.render(railMath, callback, effectiveInterval, offsetRadius1, offsetRadius2);
 	}
 
 	@Redirect(
