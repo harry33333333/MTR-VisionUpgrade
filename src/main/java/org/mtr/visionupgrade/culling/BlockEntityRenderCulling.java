@@ -19,6 +19,10 @@ public final class BlockEntityRenderCulling {
 		WorldRenderEvents.END.register(context -> end());
 	}
 
+	public static void clear() {
+		end();
+	}
+
 	public static boolean isVisible(World world, org.mtr.mapping.holder.BlockPos pos, double padding) {
 		// Shadow passes have a different view volume and must not use the camera frustum.
 		return OptimizedRenderer.renderingShadows() || visible(world.data, pos.data, padding);

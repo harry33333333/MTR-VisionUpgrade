@@ -73,6 +73,11 @@ public final class RailGeometryCache {
 		}
 	}
 
+	public synchronized void clear() {
+		samples.clear();
+		cachedDoubleCount = 0;
+	}
+
 	public int getCachedDoubleCount() {
 		return cachedDoubleCount;
 	}

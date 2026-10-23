@@ -19,5 +19,8 @@
   "mtr_visionupgrade.config.enable_frustum_culling.tooltip": "Culls off-screen PSD / APG platform screen door block entities, drastically cutting down draw calls at large interchange stations.",
 
   "mtr_visionupgrade.config.enable_safepoint_fix": "Enable Rail Culling GC Safepoint Fix",
-  "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "Periodically yields thread safepoints during rail occlusion calculations to eliminate GC safepoint freeze on large rail networks."
+  "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "Periodically yields thread safepoints during rail occlusion calculations to eliminate GC safepoint freeze on large rail networks.",
+
+  "mtr_visionupgrade.config.enable_iris_optimization": "Enable Iris Shaders Sort Optimization",
+  "mtr_visionupgrade.config.enable_iris_optimization.tooltip": "Caches translucency topological render order and feedback arc sets when Iris shaders are active, dramatically reducing frame time overhead from ~40ms to ~0.5ms."
 }

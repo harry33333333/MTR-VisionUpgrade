@@ -47,6 +47,11 @@ public class VisionUpgradeConfig {
      */
     public boolean enableSafepointFix = true;
 
+    /**
+     * Whether Iris shader topological sort optimization is enabled.
+     */
+    public boolean enableIrisOptimization = true;
+
     public static VisionUpgradeConfig get() {
         return INSTANCE;
     }

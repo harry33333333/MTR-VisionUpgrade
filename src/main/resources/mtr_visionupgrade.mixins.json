@@ -2,6 +2,7 @@
 	"required": true,
 	"minVersion": "0.8",
 	"package": "org.mtr.visionupgrade.mixin",
+	"plugin": "org.mtr.visionupgrade.mixin.VisionUpgradeMixinPlugin",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
 		"RenderPSDAPGDoorMixin",

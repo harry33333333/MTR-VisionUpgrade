@@ -23,6 +23,15 @@ final class GraphResultCache<T> {
 		this.maxRecords = maxRecords;
 	}
 
+	void clear() {
+		entries.clear();
+		Arrays.fill(identities, null);
+		Arrays.fill(weights, 0);
+		size = 0;
+		retainedRecords = 0;
+		hash = 0;
+	}
+
 	T getOrCompute(Collection<?> graphs, Object qualifier, RenderOrderCache.Graph edgeWeights, Supplier<T> compute) {
 		final int previousSize = size;
 		size = 0;

@@ -19,5 +19,8 @@
   "mtr_visionupgrade.config.enable_frustum_culling.tooltip": "对屏幕视野外的 PSD / APG 站台门方块实体进行硬件视锥剔除，大幅减少大型枢纽站的 Draw Call。",
 
   "mtr_visionupgrade.config.enable_safepoint_fix": "启用铁轨遮挡剔除 GC 安全点修复",
-  "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "在多线程遮挡剔除密集计算时定期出让安全点，消除超大规模路网导致的微卡顿与垃圾回收冻结。"
+  "mtr_visionupgrade.config.enable_safepoint_fix.tooltip": "在多线程遮挡剔除密集计算时定期出让安全点，消除超大规模路网导致的微卡顿与垃圾回收冻结。",
+
+  "mtr_visionupgrade.config.enable_iris_optimization": "启用 Iris 光影拓扑排序优化",
+  "mtr_visionupgrade.config.enable_iris_optimization.tooltip": "当开启 Iris 光影时，跨帧缓存半透明强连通分量与反馈弧集排序结果，将每帧约 40ms 的光影排序耗时降至 ~0.5ms。"
 }

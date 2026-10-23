@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 
 public final class RenderOrderCache {
 	private static final ThreadLocal<RenderOrderCache> ACTIVE = new ThreadLocal<>();
+	private static final Set<RenderOrderCache> INSTANCES = Collections.newSetFromMap(new WeakHashMap<>());
 	private final GraphResultCache<List<?>> orders;
 	private final GraphResultCache<Object> feedbackEdges;
 
@@ -15,6 +16,23 @@ public final class RenderOrderCache {
 	public RenderOrderCache(int maxSize) {
 		orders = new GraphResultCache<>(maxSize, 8, maxSize * 4);
 		feedbackEdges = new GraphResultCache<>(maxSize, 64, maxSize * 2);
+		synchronized (INSTANCES) {
+			INSTANCES.add(this);
+		}
+	}
+
+	public void clear() {
+		orders.clear();
+		feedbackEdges.clear();
+	}
+
+	public static void clearAll() {
+		ACTIVE.remove();
+		synchronized (INSTANCES) {
+			for (RenderOrderCache cache : INSTANCES) {
+				cache.clear();
+			}
+		}
 	}
 
 	public List<?> getOrCompute(Collection<?> graphs, Supplier<List<?>> compute) {

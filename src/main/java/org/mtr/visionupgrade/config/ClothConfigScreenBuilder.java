@@ -81,6 +81,15 @@ public class ClothConfigScreenBuilder {
                 .setSaveConsumer(val -> config.enableSafepointFix = val)
                 .build());
 
+        cullingCategory.addEntry(entryBuilder.startBooleanToggle(
+                Text.translatable("mtr_visionupgrade.config.enable_iris_optimization"),
+                config.enableIrisOptimization
+        )
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("mtr_visionupgrade.config.enable_iris_optimization.tooltip"))
+                .setSaveConsumer(val -> config.enableIrisOptimization = val)
+                .build());
+
         builder.setSavingRunnable(VisionUpgradeConfig::save);
         return builder.build();
     }
