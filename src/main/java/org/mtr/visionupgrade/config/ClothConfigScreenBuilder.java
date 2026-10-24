@@ -24,7 +24,7 @@ public class ClothConfigScreenBuilder {
                 0,
                 32
         )
-                .setDefaultValue(8)
+                .setDefaultValue(0)
                 .setTooltip(Text.translatable("mtr_visionupgrade.config.rail_render_distance.tooltip"))
                 .setSaveConsumer(val -> config.railRenderDistanceChunks = val)
                 .build());

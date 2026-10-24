@@ -19,7 +19,7 @@ public class VisionUpgradeConfig {
      * 0 = follow vanilla client view distance.
      * > 0 = render rails up to (chunks * 16) blocks, even when on multiplayer servers.
      */
-    public int railRenderDistanceChunks = 8;
+    public int railRenderDistanceChunks = 0;
 
     /**
      * Maximum vehicle/train render distance in blocks.
